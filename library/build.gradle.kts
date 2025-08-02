@@ -52,9 +52,6 @@ tasks.register("publishToGithub") {
     group = "publishing"
     description = "Publishes all publications to Github Packages repository."
     dependsOn("publishAllPublicationsToGithubPackagesRepository")
-    doLast {
-        println("Successfully uploaded packages to Github.")
-    }
 }
 
 val userName = extra["GithubPackagesUsername"] as? String

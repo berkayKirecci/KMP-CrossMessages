@@ -14,6 +14,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -76,37 +77,36 @@ private fun MultiPlatformSnackbar(
         }
     }
 
-    AnimatedVisibility(
-        visible = isVisible,
-        enter = slideInVertically(
-            initialOffsetY = { fullHeight -> getOffset(state, fullHeight) },
-            animationSpec = tween(
-                durationMillis = ANIMATION_DURATION,
-                easing = LinearOutSlowInEasing
-            )
-        ) + fadeIn(
-            animationSpec = tween(
-                durationMillis = ANIMATION_DURATION,
-                easing = LinearOutSlowInEasing
-            )
-        ),
-        exit = slideOutVertically(
-            targetOffsetY = { fullHeight -> getOffset(state, fullHeight) },
-            animationSpec = tween(
-                durationMillis = ANIMATION_DURATION,
-                easing = FastOutLinearInEasing
-            )
-        ) + fadeOut(
-            animationSpec = tween(
-                durationMillis = ANIMATION_DURATION,
-                easing = FastOutLinearInEasing
-            )
-        )
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = getAlignment(state)
     ) {
-
-        Box(
-            modifier = modifier.fillMaxWidth(),
-            contentAlignment = state.snackbarModel?.alignment ?: Alignment.BottomCenter
+        AnimatedVisibility(
+            visible = isVisible,
+            enter = slideInVertically(
+                initialOffsetY = { fullHeight -> getOffset(state, fullHeight) },
+                animationSpec = tween(
+                    durationMillis = ANIMATION_DURATION,
+                    easing = LinearOutSlowInEasing
+                )
+            ) + fadeIn(
+                animationSpec = tween(
+                    durationMillis = ANIMATION_DURATION,
+                    easing = LinearOutSlowInEasing
+                )
+            ),
+            exit = slideOutVertically(
+                targetOffsetY = { fullHeight -> getOffset(state, fullHeight) },
+                animationSpec = tween(
+                    durationMillis = ANIMATION_DURATION,
+                    easing = FastOutLinearInEasing
+                )
+            ) + fadeOut(
+                animationSpec = tween(
+                    durationMillis = ANIMATION_DURATION,
+                    easing = FastOutLinearInEasing
+                )
+            )
         ) {
             Row(
                 modifier = modifier.fillMaxWidth()
@@ -189,3 +189,8 @@ private fun getActionButton(state: SnackbarState) =
     state.snackbarModel?.actionButtonModel?.iconRes
         ?: state.temp?.actionButtonModel?.iconRes
         ?: Res.drawable.ic_close
+
+private fun getAlignment(state: SnackbarState) =
+    state.snackbarModel?.alignment
+        ?: state.temp?.alignment
+        ?: Alignment.BottomCenter

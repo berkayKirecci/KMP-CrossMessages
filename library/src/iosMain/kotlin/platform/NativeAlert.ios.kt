@@ -10,7 +10,6 @@ import platform.UIKit.UIAlertActionStyleDefault
 import platform.UIKit.UIAlertActionStyleDestructive
 import platform.UIKit.UIAlertController
 import platform.UIKit.UIApplication
-import platform.UIKit.UIViewController
 import platform.UIKit.UIWindow
 import platform.darwin.dispatch_async
 import platform.darwin.dispatch_get_main_queue
@@ -18,35 +17,38 @@ import platform.darwin.dispatch_get_main_queue
 @Composable
 actual fun NativeAlert(message: String?, title: String?, actions: List<Action>?) {
     dispatch_async(dispatch_get_main_queue()) {
-        val controller = createAlertController(message, title, actions)
-        setViewContoller(controller)
+        val alertController = createAlertController(message, title, actions)
+        setViewContoller(alertController)
     }
 }
 
-private fun createAlertController(message: String?, title: String?, actions: List<Action>?) =
-    UIAlertController().apply {
-        this.title = title.orEmpty()
-        this.message = message.orEmpty()
+private fun createAlertController(
+    message: String?,
+    title: String?, actions:
+    List<Action>?
+) = UIAlertController().apply {
+    this.title = title.orEmpty()
+    this.message = message.orEmpty()
 
-        if (actions.isNullOrEmpty()) {
-            addAction(
-                UIAlertAction.actionWithTitle(
-                    title = "Ok",
-                    style = UIAlertActionStyleDefault,
-                    handler = null
-                )
+    if (actions.isNullOrEmpty()) {
+        addAction(
+            UIAlertAction.actionWithTitle(
+                title = "Ok",
+                style = UIAlertActionStyleDefault,
+                handler = null
             )
-        }
-        actions?.forEach { action ->
-            addAction(
-                UIAlertAction.actionWithTitle(
-                    title = action.actionTitle,
-                    style = getStyle(action.style),
-                    handler = { action.callbak?.invoke() }
-                )
-            )
-        }
+        )
     }
+    actions?.forEach { action ->
+        addAction(
+            UIAlertAction.actionWithTitle(
+                title = action.actionTitle,
+                style = getStyle(action.style),
+                handler = { action.callbak?.invoke() }
+            )
+        )
+    }
+}
 
 private fun getStyle(actionStyle: ActionStyle) = when (actionStyle) {
     DEFAULT -> UIAlertActionStyleDefault
@@ -55,16 +57,13 @@ private fun getStyle(actionStyle: ActionStyle) = when (actionStyle) {
 }
 
 private fun setViewContoller(controller: UIAlertController) {
-    var topViewController: UIViewController? = null
     val keyWindow: UIWindow? = UIApplication.sharedApplication.windows.firstOrNull {
         (it as? UIWindow)?.isKeyWindow() == true
     } as? UIWindow
 
-    if (keyWindow != null) {
-        topViewController = keyWindow.rootViewController
-        while (topViewController?.presentedViewController != null) {
-            topViewController = topViewController.presentedViewController
-        }
+    var topViewController = keyWindow?.rootViewController
+    while (topViewController?.presentedViewController != null) {
+        topViewController = topViewController.presentedViewController
     }
 
     topViewController?.presentViewController(

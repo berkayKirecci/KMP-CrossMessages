@@ -30,13 +30,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.berkaykirecci.library.generated.resources.Res
-import com.berkaykirecci.library.generated.resources.ic_check_circle
 import com.berkaykirecci.library.generated.resources.ic_close
-import com.berkaykirecci.library.generated.resources.ic_error
-import com.berkaykirecci.library.generated.resources.ic_info
-import com.berkaykirecci.library.generated.resources.ic_warning
 import kotlinx.coroutines.delay
-import model.SnackbarType
 import org.jetbrains.compose.resources.painterResource
 import state.SnackbarState
 
@@ -117,7 +112,7 @@ private fun MultiPlatformSnackbar(
                     ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                getIcon(state)?.let { drawable ->
+                getLeadingIcon(state)?.let { drawable ->
                     Icon(
                         painter = painterResource(drawable),
                         contentDescription = null
@@ -167,17 +162,8 @@ private fun getOffset(state: SnackbarState, fullHeight: Int): Int =
         -fullHeight
     }
 
-private fun getIconForType(type: SnackbarType?) = when (type) {
-    SnackbarType.SUCCESS -> Res.drawable.ic_check_circle
-    SnackbarType.WARNING -> Res.drawable.ic_warning
-    SnackbarType.INFO -> Res.drawable.ic_info
-    SnackbarType.ERROR -> Res.drawable.ic_error
-    null -> null
-}
-
-private fun getIcon(state: SnackbarState) =
-    getIconForType(state.snackbarModel?.type)
-        ?: getIconForType(state.temp?.type)
+private fun getLeadingIcon(state: SnackbarState) =
+    state.snackbarModel?.leadingIcon ?: state.temp?.leadingIcon
 
 private fun showActionButton(state: SnackbarState) =
     state.snackbarModel?.showActionButton

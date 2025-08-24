@@ -36,8 +36,8 @@ class SnackbarState {
     }
 
     internal fun checkQueue() {
+        temp = null
         if (messageQueue.isNotEmpty()) {
-            temp = null
             snackbarModel = messageQueue.firstOrNull()
         }
     }

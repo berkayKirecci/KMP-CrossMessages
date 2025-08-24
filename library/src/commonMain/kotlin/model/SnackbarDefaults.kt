@@ -1,30 +1,35 @@
 package model
 
 import androidx.compose.ui.graphics.Color
+import com.berkaykirecci.library.generated.resources.Res
+import com.berkaykirecci.library.generated.resources.ic_check_circle
+import com.berkaykirecci.library.generated.resources.ic_error
+import com.berkaykirecci.library.generated.resources.ic_info
+import com.berkaykirecci.library.generated.resources.ic_warning
 
 object SnackbarDefaults {
 
     fun success(message: String) = SnackbarModel(
         message = message,
-        type = SnackbarType.SUCCESS,
-        backgroundColor = Color(0xff1b5e20)
+        backgroundColor = Color(0xff1b5e20),
+        leadingIcon = Res.drawable.ic_check_circle
     )
 
     fun warning(message: String) = SnackbarModel(
         message = message,
-        type = SnackbarType.WARNING,
-        backgroundColor = Color(0xffe65100)
+        backgroundColor = Color(0xffe65100),
+        leadingIcon = Res.drawable.ic_warning
     )
 
     fun error(message: String) = SnackbarModel(
         message = message,
-        type = SnackbarType.ERROR,
-        backgroundColor = Color(0xffc62828)
+        backgroundColor = Color(0xffc62828),
+        leadingIcon = Res.drawable.ic_error
     )
 
     fun info(message: String) = SnackbarModel(
         message = message,
-        type = SnackbarType.INFO,
-        backgroundColor = Color(0xff01579b)
+        backgroundColor = Color(0xff01579b),
+        leadingIcon = Res.drawable.ic_info
     )
 }

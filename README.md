@@ -14,7 +14,6 @@ It currently supports:
 ## ✨ Features
 
 - Cross-platform message handling with shared API
-- Easily trigger messages from any layer (UI, ViewModel, etc.)
 - Snackbar supports:
     - Custom actions
     - Duration control
@@ -59,14 +58,14 @@ fun App() {
     state.show(SnackbarDefaults.error("This is a error Message."))
     state.show(SnackbarDefaults.info("This is a info Message."))
     state.show(
-      model = SnackbarModel(
-        message = "Custom Mesaj",
-        backgroundColor = Color.LightGray,
-        duration = 3000L,
-        leadingIcon = Res.drawable.leadingIcon,
-        showActionButton = false,
-        alignment = Alignment.BottomCenter
-      )
+        model = SnackbarModel(
+            message = "Custom Message",
+            backgroundColor = Color.LightGray,
+            duration = 3000L,
+            leadingIcon = Res.drawable.leadingIcon,
+            showActionButton = false,
+            alignment = Alignment.BottomCenter
+        )
     )
 }
 ```
@@ -91,20 +90,6 @@ fun App() {
 
 ---
 
-```bash
-# Clone the repo
-git clone https://github.com/yourusername/compose-crossmessages.git
-cd compose-crossmessages
-
-# Run example on Android
-./gradlew :example-app:androidRun
-
-# Run example on iOS
-open iosApp/iosApp.xcworkspace
-```
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -113,5 +98,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👋 Contributing
 
-Pull requests and issues are welcome!  
-Let’s build cross-platform UI utilities together.
+Pull requests and issues are welcome!

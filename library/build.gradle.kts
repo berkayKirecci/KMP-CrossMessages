@@ -71,17 +71,17 @@ publishing {
 }
 
 group = "com.berkaykirecci"
-version = "0.0.65"
+version = "0.0.70"
 
 signing {
-    useGpgCmd()
-    sign(publishing.publications)
+    //useGpgCmd()
+    //sign(publishing.publications)
 }
 
 mavenPublishing {
     publishToMavenCentral()
 
-    signAllPublications()
+    //signAllPublications()
 
     coordinates(group.toString(), "snackbar", version.toString())
 

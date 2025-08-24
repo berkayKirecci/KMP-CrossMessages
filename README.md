@@ -40,7 +40,7 @@ It currently supports:
 
 ```kotlin
 dependencies {
-    implementation("com.yourorg:compose-crossmessages:<version>")
+    implementation("com.berkaykirecci:snackbar:$version")
 }
 ```
 </details>
@@ -83,37 +83,6 @@ MessageManager.showNativeAlert(
 ```
 
 ---
-
-## 🧹 Architecture
-
-```
-commonMain/
-├── MessageManager.kt      # Public API
-├── MessageQueue.kt        # Internal message state holder
-├── MessageHost.kt         # UI Composable for snackbars
-└── types/
-    ├── Message.kt         # Message sealed class
-    └── MessageType.kt     # Toast, Snackbar, Dialog, Alert
-
-androidMain/
-└── NativeAlertImpl.kt     # Uses AlertDialog
-
-iosMain/
-└── NativeAlertImpl.kt     # Uses UIAlertController (via UIKit)
-```
-
----
-
-## 🤪 Example Usage
-
-See the [`example-app/`](example-app/) module to try it out with Compose Multiplatform setup.  
-Supports both Android Emulator and iOS Simulator.
-
----
-
-## 🔧 Development
-
-Until published on MavenCentral:
 
 ```bash
 # Clone the repo

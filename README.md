@@ -1,6 +1,7 @@
 # 📦 Compose CrossMessages
 
-**Compose CrossMessages** is a simple and lightweight library for displaying messages across Android and iOS using Jetpack Compose Multiplatform (KMP).  
+**Compose CrossMessages** is a simple and lightweight library for displaying messages across Android
+and iOS using Jetpack Compose Multiplatform (KMP).  
 It currently supports:
 
 - ✅ Custom **Snackbar** UI for Compose-based apps
@@ -25,8 +26,8 @@ It currently supports:
 
 ## 📸 Screenshots
 
-| Android Snackbar | iOS Native Alert |
-|------------------|------------------|
+| Android Snackbar                                        | iOS Native Alert                          |
+|---------------------------------------------------------|-------------------------------------------|
 | ![android-snackbar](./screenshots/snackbar_android.png) | ![ios-alert](./screenshots/alert_ios.png) |
 
 ---
@@ -45,36 +46,33 @@ dependencies {
 
 ---
 
-### 2. Setup `MessageHost` in Root Composable
+### 2. Example Usages
+
+#### 📍 Show Snackbar Messages
 
 ```kotlin
 @Composable
 fun App() {
-    MessageHost() // Must be at the root of your app
-    MainScreen()
+    val state = rememberSnackbarState()
+    state.show(SnackbarDefaults.success("This is a success Message."))
+    state.show(SnackbarDefaults.warning("This is a warning Message."))
+    state.show(SnackbarDefaults.error("This is a error Message."))
+    state.show(SnackbarDefaults.info("This is a info Message."))
 }
 ```
 
 ---
 
-### 3. Trigger Messages
-
-#### 📍 Show Snackbar
-```kotlin
-MessageManager.showSnackbar(
-    message = "Settings saved",
-    actionLabel = "Undo",
-    onAction = { /* revert logic */ }
-)
-```
-
 #### 📍 Show Native Alert
+
 ```kotlin
-MessageManager.showNativeAlert(
-    title = "Are you sure?",
-    message = "This action cannot be undone.",
-    onConfirm = { /* handle confirm */ },
-    onCancel = { /* handle cancel */ }
+NativeAlert(
+    message = "Warning",
+    title = "This is a warning message!",
+    actions = listOf(
+        Action("Ok", ActionStyle.DEFAULT),
+        Action("Cancel", ActionStyle.CANCEL)
+    )
 )
 ```
 

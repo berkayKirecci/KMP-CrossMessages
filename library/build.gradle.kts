@@ -5,11 +5,12 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.vanniktech.mavenPublish)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
     signing
 }
 
 kotlin {
-    jvm()
     androidTarget {
         publishLibraryVariants("release")
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -20,20 +21,22 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-    linuxX64()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                //put your multiplatform dependencies here
-            }
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(libs.kotlin.test)
-            }
+        commonMain.dependencies {
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.ui)
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
         }
     }
+}
+
+
+dependencies {
+    debugImplementation(compose.uiTooling)
 }
 
 android {
@@ -68,17 +71,17 @@ publishing {
 }
 
 group = "com.berkaykirecci"
-version = "1.0.0"
+version = "0.0.56"
 
 signing {
-    useGpgCmd()
-    sign(publishing.publications)
+    //useGpgCmd()
+    //sign(publishing.publications)
 }
 
 mavenPublishing {
     publishToMavenCentral()
 
-    signAllPublications()
+    //signAllPublications()
 
     coordinates(group.toString(), "snackbar", version.toString())
 

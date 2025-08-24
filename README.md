@@ -35,7 +35,6 @@ It currently supports:
 
 ### 1. Add Dependency
 
-<details>
 <summary><b>Gradle (Kotlin DSL)</b></summary>
 
 ```kotlin
@@ -43,9 +42,6 @@ dependencies {
     implementation("com.berkaykirecci:snackbar:$version")
 }
 ```
-</details>
-
-> 📦 Coming soon on MavenCentral. For now, use [local build](#🔧-development).
 
 ---
 

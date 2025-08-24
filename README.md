@@ -58,6 +58,17 @@ fun App() {
     state.show(SnackbarDefaults.warning("This is a warning Message."))
     state.show(SnackbarDefaults.error("This is a error Message."))
     state.show(SnackbarDefaults.info("This is a info Message."))
+    state.show(
+      model = SnackbarModel(
+        message = "Custom Mesaj",
+        backgroundColor = Color.LightGray,
+        duration = 3000L,
+        leadingIcon = Res.drawable.leadingIcon,
+        showActionButton = false,
+        alignment = Alignment.BottomCenter
+      )
+    )
+      
 }
 ```
 

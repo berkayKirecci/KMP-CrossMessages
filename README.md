@@ -35,7 +35,7 @@ It currently supports:
 
 ### 1. Add Dependency
 
-<summary><b>Gradle (Kotlin DSL)</b></summary>
+### Gradle (Kotlin DSL)
 
 ```kotlin
 dependencies {

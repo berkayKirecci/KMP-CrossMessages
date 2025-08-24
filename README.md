@@ -68,7 +68,6 @@ fun App() {
         alignment = Alignment.BottomCenter
       )
     )
-      
 }
 ```
 
@@ -77,14 +76,17 @@ fun App() {
 #### 📍 Show Native Alert
 
 ```kotlin
-NativeAlert(
-    message = "Warning",
-    title = "This is a warning message!",
-    actions = listOf(
-        Action("Ok", ActionStyle.DEFAULT),
-        Action("Cancel", ActionStyle.CANCEL)
+@Composable
+fun App() {
+    NativeAlert(
+        message = "Warning",
+        title = "This is a warning message!",
+        actions = listOf(
+            Action("Ok", ActionStyle.DEFAULT),
+            Action("Cancel", ActionStyle.CANCEL)
+        )
     )
-)
+}
 ```
 
 ---

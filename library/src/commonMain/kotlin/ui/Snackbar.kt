@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -28,6 +29,7 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.berkaykirecci.library.generated.resources.Res
 import com.berkaykirecci.library.generated.resources.ic_close
@@ -112,9 +114,11 @@ private fun MultiPlatformSnackbar(
                     ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                getLeadingIcon(state)?.let { drawable ->
+                getLeadingIconModel(state)?.let { model ->
                     Icon(
-                        painter = painterResource(drawable),
+                        modifier = Modifier.size(model.iconSize),
+                        painter = painterResource(model.iconRes),
+                        tint = model.iconTint,
                         contentDescription = null
                     )
                 }
@@ -123,7 +127,9 @@ private fun MultiPlatformSnackbar(
 
                 Text(
                     modifier = Modifier.weight(1f),
-                    text = snackbarMessage
+                    text = snackbarMessage,
+                    color = getTextColor(state),
+                    textAlign = getTextAlignment(state)
                 )
 
                 Spacer(Modifier.width(8.dp))
@@ -162,8 +168,8 @@ private fun getOffset(state: SnackbarState, fullHeight: Int): Int =
         -fullHeight
     }
 
-private fun getLeadingIcon(state: SnackbarState) =
-    state.snackbarModel?.leadingIcon ?: state.temp?.leadingIcon
+private fun getLeadingIconModel(state: SnackbarState) =
+    state.snackbarModel?.leadingIconModel ?: state.temp?.leadingIconModel
 
 private fun showActionButton(state: SnackbarState) =
     state.snackbarModel?.showActionButton
@@ -180,3 +186,13 @@ private fun getAlignment(state: SnackbarState) =
     state.snackbarModel?.alignment
         ?: state.temp?.alignment
         ?: Alignment.BottomCenter
+
+private fun getTextAlignment(state: SnackbarState) =
+    state.snackbarModel?.textModel?.textAlignment
+        ?: state.temp?.textModel?.textAlignment
+        ?: TextAlign.Start
+
+private fun getTextColor(state: SnackbarState) =
+    state.snackbarModel?.textModel?.textColor
+        ?: state.temp?.textModel?.textColor
+        ?: Color.Black

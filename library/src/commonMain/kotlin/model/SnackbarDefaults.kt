@@ -12,24 +12,24 @@ object SnackbarDefaults {
     fun success(message: String) = SnackbarModel(
         message = message,
         backgroundColor = Color(0xff1b5e20),
-        leadingIcon = Res.drawable.ic_check_circle
+        leadingIconModel = LeadingIconModel(Res.drawable.ic_check_circle)
     )
 
     fun warning(message: String) = SnackbarModel(
         message = message,
         backgroundColor = Color(0xffe65100),
-        leadingIcon = Res.drawable.ic_warning
+        leadingIconModel = LeadingIconModel(Res.drawable.ic_warning)
     )
 
     fun error(message: String) = SnackbarModel(
         message = message,
         backgroundColor = Color(0xffc62828),
-        leadingIcon = Res.drawable.ic_error
+        leadingIconModel = LeadingIconModel(Res.drawable.ic_error)
     )
 
     fun info(message: String) = SnackbarModel(
         message = message,
         backgroundColor = Color(0xff01579b),
-        leadingIcon = Res.drawable.ic_info
+        leadingIconModel = LeadingIconModel(Res.drawable.ic_info)
     )
 }

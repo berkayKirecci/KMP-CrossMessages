@@ -87,8 +87,13 @@ state.show(
 ```
 #### 🎞️ Demo
 
-![Snackbar Demo](./media/android_snackbar.gif)
-![Snackbar Demo](./media/ios_snackbar.gif)
+<h3 align="center">📱 Android vs iOS Snackbar</h3>
+
+<p align="center">
+  <img src="./media/snackbar_android.gif" width="45%" alt="Android Snackbar Demo"/>
+  &nbsp;
+  <img src="./media/snackbar_ios.gif" width="45%" alt="iOS Snackbar Demo"/>
+</p>
 
 ---
 

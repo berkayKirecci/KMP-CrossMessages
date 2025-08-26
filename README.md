@@ -49,25 +49,37 @@ dependencies {
 
 #### 📍 Show Snackbar Messages
 
+#### 🔹 Default Types
+
 ```kotlin
-@Composable
-fun App() {
-    val state = rememberSnackbarState()
-    state.show(SnackbarDefaults.success("This is a success Message."))
-    state.show(SnackbarDefaults.warning("This is a warning Message."))
-    state.show(SnackbarDefaults.error("This is a error Message."))
-    state.show(SnackbarDefaults.info("This is a info Message."))
-    state.show(
-        model = SnackbarModel(
-            message = "Custom Message",
-            backgroundColor = Color.LightGray,
-            duration = 3000L,
-            leadingIcon = Res.drawable.leadingIcon,
-            showActionButton = false,
-            alignment = Alignment.BottomCenter
-        )
+val state = rememberSnackbarState()
+
+state.show(SnackbarDefaults.success("Success Message"))
+state.show(SnackbarDefaults.warning("Warning Message"))
+state.show(SnackbarDefaults.error("Error Message"))
+state.show(SnackbarDefaults.info("Info Message"))
+```
+
+#### 🔹 Fully Customized Snackbar
+```kotlin
+state.show(
+    SnackbarModel(
+        message = "Custom Message",
+        backgroundColor = Color.Black,
+        duration = 3000L,
+        showActionButton = false,
+        leadingIconModel = LeadingIconModel(
+            iconRes = Res.drawable.icon,
+            iconTint = Color.LightGray,
+            iconSize = 18.dp
+        ),
+        textModel = TextModel(
+            textColor = Color.Yellow,
+            textAlignment = TextAlign.Center
+        ),
+        alignment = Alignment.TopCenter
     )
-}
+)
 ```
 
 ---

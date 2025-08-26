@@ -1,6 +1,5 @@
 package platform
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.runtime.Composable
 import platform.CoreGraphics.CGFloat
 import platform.UIKit.NSLayoutConstraint

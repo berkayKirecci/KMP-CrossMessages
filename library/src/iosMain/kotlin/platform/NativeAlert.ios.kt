@@ -9,9 +9,6 @@ import platform.UIKit.UIAlertActionStyleCancel
 import platform.UIKit.UIAlertActionStyleDefault
 import platform.UIKit.UIAlertActionStyleDestructive
 import platform.UIKit.UIAlertController
-import platform.UIKit.UIApplication
-import platform.UIKit.UIViewController
-import platform.UIKit.UIWindow
 import platform.darwin.dispatch_async
 import platform.darwin.dispatch_get_main_queue
 
@@ -63,16 +60,4 @@ private fun setViewContoller(controller: UIAlertController) {
         animated = true,
         completion = null
     )
-}
-
-fun getViewController(): UIViewController? {
-    val keyWindow: UIWindow? = UIApplication.sharedApplication.windows.firstOrNull {
-        (it as? UIWindow)?.isKeyWindow() == true
-    } as? UIWindow
-
-    var topViewController = keyWindow?.rootViewController
-    while (topViewController?.presentedViewController != null) {
-        topViewController = topViewController.presentedViewController
-    }
-    return topViewController
 }

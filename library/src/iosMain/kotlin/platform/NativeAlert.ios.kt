@@ -10,12 +10,13 @@ import platform.UIKit.UIAlertActionStyleDefault
 import platform.UIKit.UIAlertActionStyleDestructive
 import platform.UIKit.UIAlertController
 import platform.UIKit.UIApplication
+import platform.UIKit.UIViewController
 import platform.UIKit.UIWindow
 import platform.darwin.dispatch_async
 import platform.darwin.dispatch_get_main_queue
 
 @Composable
-actual fun NativeAlert(message: String?, title: String?, actions: List<Action>?) {
+actual fun NativeAlert(message: String?, title: String?, actions: List<DialogAction>?) {
     dispatch_async(dispatch_get_main_queue()) {
         val alertController = createAlertController(message, title, actions)
         setViewContoller(alertController)
@@ -25,7 +26,7 @@ actual fun NativeAlert(message: String?, title: String?, actions: List<Action>?)
 private fun createAlertController(
     message: String?,
     title: String?, actions:
-    List<Action>?
+    List<DialogAction>?
 ) = UIAlertController().apply {
     this.title = title.orEmpty()
     this.message = message.orEmpty()
@@ -57,6 +58,14 @@ private fun getStyle(actionStyle: ActionStyle) = when (actionStyle) {
 }
 
 private fun setViewContoller(controller: UIAlertController) {
+    getViewController()?.presentViewController(
+        viewControllerToPresent = controller,
+        animated = true,
+        completion = null
+    )
+}
+
+fun getViewController(): UIViewController? {
     val keyWindow: UIWindow? = UIApplication.sharedApplication.windows.firstOrNull {
         (it as? UIWindow)?.isKeyWindow() == true
     } as? UIWindow
@@ -65,10 +74,5 @@ private fun setViewContoller(controller: UIAlertController) {
     while (topViewController?.presentedViewController != null) {
         topViewController = topViewController.presentedViewController
     }
-
-    topViewController?.presentViewController(
-        viewControllerToPresent = controller,
-        animated = true,
-        completion = null
-    )
+    return topViewController
 }

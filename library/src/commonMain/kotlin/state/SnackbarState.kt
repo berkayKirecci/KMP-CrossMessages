@@ -29,12 +29,6 @@ class SnackbarState {
         snackbarModel = null
     }
 
-    fun clearAll() {
-        snackbarModel = null
-        temp = null
-        messageQueue.clear()
-    }
-
     internal fun checkQueue() {
         temp = null
         if (messageQueue.isNotEmpty()) {

@@ -6,10 +6,10 @@ import androidx.compose.runtime.Composable
 expect fun NativeAlert(
     message: String? = null,
     title: String? = null,
-    actions: List<Action>? = null
+    actions: List<DialogAction>? = null
 )
 
-data class Action(
+data class DialogAction(
     val actionTitle: String,
     val style: ActionStyle = ActionStyle.DEFAULT,
     val callbak: (() -> Unit)? = null

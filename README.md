@@ -85,6 +85,9 @@ state.show(
     )
 )
 ```
+#### 🎞️ Demo
+
+![Snackbar Demo](./media/android_snackbar.gif)
 
 ---
 

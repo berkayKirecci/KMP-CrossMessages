@@ -67,7 +67,11 @@ state.show(
         message = "Custom Message",
         backgroundColor = Color.Black,
         duration = 3000L,
-        showActionButton = false,
+        showActionButton = true,
+        actionButtonModel = ActionButtonModel(
+            iconRes = Res.drawable.action_btn,
+            onActionClick = { }
+        ),
         leadingIconModel = LeadingIconModel(
             iconRes = Res.drawable.icon,
             iconTint = Color.LightGray,

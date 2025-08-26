@@ -90,9 +90,9 @@ state.show(
 <h3 align="center">📱 Android vs iOS Snackbar</h3>
 
 <p align="center">
-  <img src="./media/snackbar_android.gif" width="45%" alt="Android Snackbar Demo"/>
+  <img src="./media/android_snackbar.gif" width="45%" alt="Android Snackbar Demo"/>
   &nbsp;
-  <img src="./media/snackbar_ios.gif" width="45%" alt="iOS Snackbar Demo"/>
+  <img src="./media/ios_snacbar.gif" width="45%" alt="iOS Snackbar Demo"/>
 </p>
 
 ---

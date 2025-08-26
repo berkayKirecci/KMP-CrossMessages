@@ -40,7 +40,7 @@ dependencies {
 }
 
 android {
-    namespace = "com.berkaykirecci.snackbar"
+    namespace = "io.github.berkaykirecci.crossmessages"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
@@ -64,14 +64,14 @@ publishing {
     repositories {
         maven {
             name = "GithubPackages"
-            url = uri("https://maven.pkg.github.com/$userName/KMP-Snackbar")
+            url = uri("https://maven.pkg.github.com/$userName/KMP-CrossMessages")
             credentials(PasswordCredentials::class)
         }
     }
 }
 
 group = "com.berkaykirecci"
-version = "0.0.71"
+version = "0.0.1"
 
 signing {
     //useGpgCmd()
@@ -83,13 +83,13 @@ mavenPublishing {
 
     //signAllPublications()
 
-    coordinates(group.toString(), "snackbar", version.toString())
+    coordinates(group.toString(), "crossmesages", version.toString())
 
     pom {
-        name = "KMP-Snackbar"
+        name = "KMP-CrossMessages"
         description = "Multiplatform Library"
         inceptionYear = "2025"
-        url.set("https://github.com/$userName/KMP-Snackbar")
+        url.set("https://github.com/$userName/KMP-CrossMessages")
         licenses {
             license {
                 name = "The Apache License, Version 2.0"
@@ -105,9 +105,9 @@ mavenPublishing {
             }
         }
         scm {
-            url = "https://github.com/$userName/KMP-Snackbar"
-            connection = "scm:git:git://github.com/$userName/KMP-Snackbar.git"
-            developerConnection = "scm:git:ssh://github.com/$userName/KMP-Snackbar.git"
+            url = "https://github.com/$userName/KMP-CrossMessages"
+            connection = "scm:git:git://github.com/$userName/KMP-CrossMessages.git"
+            developerConnection = "scm:git:ssh://github.com/$userName/KMP-CrossMessages.git"
         }
     }
 }

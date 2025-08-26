@@ -23,14 +23,6 @@ It currently supports:
 
 ---
 
-## 📸 Screenshots
-
-| Android Snackbar                                        | iOS Native Alert                          |
-|---------------------------------------------------------|-------------------------------------------|
-| ![android-snackbar](./screenshots/snackbar_android.png) | ![ios-alert](./screenshots/alert_ios.png) |
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Add Dependency
@@ -61,6 +53,7 @@ state.show(SnackbarDefaults.info("Info Message"))
 ```
 
 #### 🔹 Fully Customized Snackbar
+
 ```kotlin
 state.show(
     SnackbarModel(
@@ -85,7 +78,8 @@ state.show(
     )
 )
 ```
-#### 🎞️ Demo Android - iOS
+
+#### 🎞️ Demo - Android | iOS
 
 <p align="center">
   <img src="./media/android_snackbar.gif" width="45%" alt="Android Snackbar Demo"/>

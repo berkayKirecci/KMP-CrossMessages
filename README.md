@@ -100,8 +100,8 @@ fun App() {
         message = "Warning",
         title = "This is a warning message!",
         actions = listOf(
-            Action("Ok", ActionStyle.DEFAULT),
-            Action("Cancel", ActionStyle.CANCEL)
+          DialogAction("Ok", ActionStyle.DEFAULT),
+          DialogAction("Cancel", ActionStyle.CANCEL)
         )
     )
 }

@@ -47,16 +47,16 @@ dependencies {
 val snackbarState = rememberSnackbarState()
 MultiPlatformSnackbar(state = snackbarState)
 
-state.show(SnackbarDefaults.success("Success Message"))
-state.show(SnackbarDefaults.warning("Warning Message"))
-state.show(SnackbarDefaults.error("Error Message"))
-state.show(SnackbarDefaults.info("Info Message"))
+snackbarState.show(SnackbarDefaults.success("Success Message"))
+snackbarState.show(SnackbarDefaults.warning("Warning Message"))
+snackbarState.show(SnackbarDefaults.error("Error Message"))
+snackbarState.show(SnackbarDefaults.info("Info Message"))
 ```
 
 #### 🔹 Fully Customized Snackbar
 
 ```kotlin
-state.show(
+snackbarState.show(
     SnackbarModel(
         message = "Custom Message",
         backgroundColor = Color.Black,
@@ -86,7 +86,7 @@ state.show(
 val toastState = rememberToastState()
 Toast(state = toastState)
 
-state.show("Toast Message")
+toastState.show("Toast Message")
 ```
 
 ---

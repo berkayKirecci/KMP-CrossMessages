@@ -57,9 +57,6 @@ tasks.register("publishToMaven") {
     dependsOn("publishToMavenCentral")
 }
 
-val userName = extra["GithubPackagesUsername"] as? String
-val developerName = extra["GithubPackagesName"] as? String
-
 group = "io.github.berkaykirecci"
 version = "1.0.0"
 
@@ -79,7 +76,7 @@ mavenPublishing {
         name = "KMP-CrossMessages"
         description = "Multiplatform Library"
         inceptionYear = "2025"
-        url.set("https://github.com/$userName/KMP-CrossMessages")
+        url.set("https://github.com/berkayKirecci/KMP-CrossMessages")
         licenses {
             license {
                 name = "The Apache License, Version 2.0"
@@ -89,15 +86,15 @@ mavenPublishing {
         }
         developers {
             developer {
-                id = "$userName"
-                name = "$developerName"
-                url = "https://github.com/$userName/"
+                id = "berkayKirecci"
+                name = "Berkay Kireçci"
+                url = "https://github.com/berkayKirecci/"
             }
         }
         scm {
-            url = "https://github.com/$userName/KMP-CrossMessages"
-            connection = "scm:git:git://github.com/$userName/KMP-CrossMessages.git"
-            developerConnection = "scm:git:ssh://github.com/$userName/KMP-CrossMessages.git"
+            url = "https://github.com/berkayKirecci/KMP-CrossMessages"
+            connection = "scm:git:git://github.com/berkayKirecci/KMP-CrossMessages.git"
+            developerConnection = "scm:git:ssh://github.com/berkayKirecci/KMP-CrossMessages.git"
         }
     }
 }

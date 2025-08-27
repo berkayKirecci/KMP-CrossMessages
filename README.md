@@ -18,7 +18,7 @@ It currently supports:
     - Custom actions
     - Duration control
     - Queued messages
-- Native alerts on both platforms
+- Native toast messages and alerts on both platforms
 - Designed for **KMP-first** projects (uses `expect/actual`)
 
 ---

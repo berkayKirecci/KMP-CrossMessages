@@ -1,48 +1,43 @@
 package platform
 
-import android.app.AlertDialog
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-import platform.ActionStyle.CANCEL
-import platform.ActionStyle.DEFAULT
-import platform.ActionStyle.DESTRUCTIVE
+import state.AlertState
 
 @Composable
-actual fun NativeAlert(
-    message: String?,
-    title: String?,
-    onDismiss: () -> Unit,
-    actions: List<DialogAction>?
-) {
-    val builder = AlertDialog.Builder(LocalContext.current)
-        .setTitle(title)
-        .setMessage(message)
-
-    if (actions.isNullOrEmpty()) {
-        builder.setPositiveButton("Ok") { dialog, _ ->
-            dialog.dismiss()
-            onDismiss()
+actual fun NativeAlert(state: AlertState) {
+    val model = state.alertModel
+    AlertDialog(
+        onDismissRequest = { state.clear() },
+        title = {
+            Text(model?.title.orEmpty())
+        },
+        text = {
+            Text(model?.message.orEmpty())
+        },
+        confirmButton = {
+            val action = model?.actions?.firstOrNull { it.style == ActionStyle.DEFAULT }
+            if (action == null) {
+                TextButton({}, "Ok") { state.clear() }
+            } else {
+                TextButton(action.callbak, action.actionTitle) { state.clear() }
+            }
+        },
+        dismissButton = {
+            val action = model?.actions?.firstOrNull { it.style == ActionStyle.CANCEL }
+            TextButton(action?.callbak, action?.actionTitle) { state.clear() }
         }
+    )
+}
+
+@Composable
+private fun TextButton(onClick: (() -> Unit)?, text: String?, clear: () -> Unit) {
+    TextButton(onClick = {
+        onClick?.invoke()
+        clear()
+    }) {
+        Text(text.orEmpty())
     }
-
-    actions?.forEach { action ->
-        when (action.style) {
-            DEFAULT -> builder.setPositiveButton(action.actionTitle) { _, _ ->
-                action.callbak?.invoke()
-                onDismiss()
-            }
-
-            CANCEL -> builder.setNegativeButton(action.actionTitle) { _, _ ->
-                action.callbak?.invoke()
-                onDismiss()
-            }
-
-            DESTRUCTIVE -> builder.setNeutralButton(action.actionTitle) { _, _ ->
-                action.callbak?.invoke()
-                onDismiss()
-            }
-        }
-    }
-
-    builder.show()
 }

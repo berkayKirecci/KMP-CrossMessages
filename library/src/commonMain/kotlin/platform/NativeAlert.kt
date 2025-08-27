@@ -1,14 +1,10 @@
 package platform
 
 import androidx.compose.runtime.Composable
+import state.AlertState
 
 @Composable
-expect fun NativeAlert(
-    message: String? = null,
-    title: String? = null,
-    onDismiss: () -> Unit = {},
-    actions: List<DialogAction>? = null
-)
+internal expect fun NativeAlert(state: AlertState)
 
 data class DialogAction(
     val actionTitle: String,

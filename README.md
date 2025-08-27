@@ -31,7 +31,7 @@ It currently supports:
 
 ```kotlin
 dependencies {
-    implementation("com.berkaykirecci:snackbar:$version")
+    implementation("com.berkaykirecci:crossmessages:$version")
 }
 ```
 

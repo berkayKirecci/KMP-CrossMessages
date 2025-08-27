@@ -5,7 +5,7 @@ and iOS using Jetpack Compose Multiplatform (KMP).
 It currently supports:
 
 - ✅ Custom **Snackbar** UI for Compose-based apps
-- ✅ Native **Alert Dialogs** using platform-specific APIs:
+- ✅ Native **Toast Messages** and **Alert Dialogs** using platform-specific APIs:
     - `AlertDialog` on Android
     - `UIAlertController` on iOS
 

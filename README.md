@@ -23,6 +23,16 @@ It currently supports:
 
 ---
 
+## 🎞️ Demo
+
+<p align="center">
+  <img src="./media/android.gif" alt="Android Snackbar Demo"/>
+  &nbsp;
+  <img src="./media/ios.gif" alt="iOS Snackbar Demo"/>
+</p>
+
+---
+
 ## 🚀 Getting Started
 
 ### 1. Add Dependency
@@ -98,14 +108,14 @@ val alertState = rememberAlertState()
 Alert(state = alertState)
 
 alertState.show(
-  AlertModel(
-    message = "Alert Message",
-    title = "Alert Title",
-    actions = listOf(
-      DialogAction("Ok", ActionStyle.DEFAULT),
-      DialogAction("Cancel", ActionStyle.CANCEL)
+    AlertModel(
+        message = "Alert Message",
+        title = "Alert Title",
+        actions = listOf(
+            DialogAction("Ok", ActionStyle.DEFAULT),
+            DialogAction("Cancel", ActionStyle.CANCEL)
+        )
     )
-  )
 )
 ```
 

@@ -94,17 +94,19 @@ toastState.show("Toast Message")
 #### 📍 Show Native Alert
 
 ```kotlin
-@Composable
-fun App() {
-    NativeAlert(
-        message = "Warning",
-        title = "This is a warning message!",
-        actions = listOf(
-          DialogAction("Ok", ActionStyle.DEFAULT),
-          DialogAction("Cancel", ActionStyle.CANCEL)
-        )
+val alertState = rememberAlertState()
+Alert(state = alertState)
+
+alertState.show(
+  AlertModel(
+    message = "Alert Message",
+    title = "Alert Title",
+    actions = listOf(
+      DialogAction("Ok", ActionStyle.DEFAULT),
+      DialogAction("Cancel", ActionStyle.CANCEL)
     )
-}
+  )
+)
 ```
 
 ---

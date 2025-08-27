@@ -44,12 +44,13 @@ dependencies {
 #### 🔹 Default Types
 
 ```kotlin
-val state = rememberSnackbarState()
+val snackbarState = rememberSnackbarState()
 
 state.show(SnackbarDefaults.success("Success Message"))
 state.show(SnackbarDefaults.warning("Warning Message"))
 state.show(SnackbarDefaults.error("Error Message"))
 state.show(SnackbarDefaults.info("Info Message"))
+MultiPlatformSnackbar(state = snackbarState)
 ```
 
 #### 🔹 Fully Customized Snackbar
@@ -79,13 +80,14 @@ state.show(
 )
 ```
 
-#### 🎞️ Demo - Android | iOS
+#### 📍 Show Toast Messages
 
-<p align="center">
-  <img src="./media/android_snackbar.gif" width="45%" alt="Android Snackbar Demo"/>
-  &nbsp;
-  <img src="./media/ios_snacbar.gif" width="45%" alt="iOS Snackbar Demo"/>
-</p>
+```kotlin
+val toastState = rememberToastState()
+
+state.show("Toast Message")
+Toast(state = toastState)
+```
 
 ---
 

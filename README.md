@@ -19,7 +19,7 @@ It currently supports:
     - Duration control
     - Queued messages
 - Native toast messages and alerts on both platforms
-- Designed for **KMP-first** projects (uses `expect/actual`)
+- Designed for **KMP-first** projects
 
 ---
 

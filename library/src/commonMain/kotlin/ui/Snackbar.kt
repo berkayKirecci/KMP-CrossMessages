@@ -31,8 +31,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.berkaykirecci.library.generated.resources.Res
-import com.berkaykirecci.library.generated.resources.ic_close
+import io.github.berkaykirecci.library.generated.resources.Res
+import io.github.berkaykirecci.library.generated.resources.ic_close
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import state.SnackbarState

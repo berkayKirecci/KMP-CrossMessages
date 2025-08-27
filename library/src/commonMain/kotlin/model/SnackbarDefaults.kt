@@ -1,11 +1,12 @@
 package model
 
 import androidx.compose.ui.graphics.Color
-import com.berkaykirecci.library.generated.resources.Res
-import com.berkaykirecci.library.generated.resources.ic_check_circle
-import com.berkaykirecci.library.generated.resources.ic_error
-import com.berkaykirecci.library.generated.resources.ic_info
-import com.berkaykirecci.library.generated.resources.ic_warning
+import io.github.berkaykirecci.library.generated.resources.Res
+import io.github.berkaykirecci.library.generated.resources.ic_check_circle
+import io.github.berkaykirecci.library.generated.resources.ic_error
+import io.github.berkaykirecci.library.generated.resources.ic_info
+import io.github.berkaykirecci.library.generated.resources.ic_warning
+
 
 object SnackbarDefaults {
 

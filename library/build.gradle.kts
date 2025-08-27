@@ -51,37 +51,27 @@ android {
     }
 }
 
-tasks.register("publishToGithub") {
+tasks.register("publishToMaven") {
     group = "publishing"
-    description = "Publishes all publications to Github Packages repository."
-    dependsOn("publishAllPublicationsToGithubPackagesRepository")
+    description = "Publishes all publications to Maven repository."
+    dependsOn("publishToMavenCentral")
 }
 
 val userName = extra["GithubPackagesUsername"] as? String
 val developerName = extra["GithubPackagesName"] as? String
 
-publishing {
-    repositories {
-        maven {
-            name = "GithubPackages"
-            url = uri("https://maven.pkg.github.com/$userName/KMP-CrossMessages")
-            credentials(PasswordCredentials::class)
-        }
-    }
-}
-
-group = "com.berkaykirecci"
+group = "io.github.berkaykirecci"
 version = "1.0.0"
 
 signing {
-    //useGpgCmd()
-    //sign(publishing.publications)
+    useGpgCmd()
+    sign(publishing.publications)
 }
 
 mavenPublishing {
     publishToMavenCentral()
 
-    //signAllPublications()
+    signAllPublications()
 
     coordinates(group.toString(), "crossmesages", version.toString())
 

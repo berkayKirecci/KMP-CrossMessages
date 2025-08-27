@@ -13,17 +13,23 @@ import platform.darwin.dispatch_async
 import platform.darwin.dispatch_get_main_queue
 
 @Composable
-actual fun NativeAlert(message: String?, title: String?, actions: List<DialogAction>?) {
+actual fun NativeAlert(
+    message: String?,
+    title: String?,
+    onDismiss: () -> Unit,
+    actions: List<DialogAction>?
+) {
     dispatch_async(dispatch_get_main_queue()) {
-        val alertController = createAlertController(message, title, actions)
+        val alertController = createAlertController(message, title, onDismiss, actions)
         setViewContoller(alertController)
     }
 }
 
 private fun createAlertController(
     message: String?,
-    title: String?, actions:
-    List<DialogAction>?
+    title: String?,
+    onDismiss: () -> Unit,
+    actions: List<DialogAction>?
 ) = UIAlertController().apply {
     this.title = title.orEmpty()
     this.message = message.orEmpty()
@@ -33,7 +39,7 @@ private fun createAlertController(
             UIAlertAction.actionWithTitle(
                 title = "Ok",
                 style = UIAlertActionStyleDefault,
-                handler = null
+                handler = { onDismiss() }
             )
         )
     }
@@ -42,7 +48,10 @@ private fun createAlertController(
             UIAlertAction.actionWithTitle(
                 title = action.actionTitle,
                 style = getStyle(action.style),
-                handler = { action.callbak?.invoke() }
+                handler = {
+                    action.callbak?.invoke()
+                    onDismiss()
+                }
             )
         )
     }

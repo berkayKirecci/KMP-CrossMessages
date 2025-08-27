@@ -71,7 +71,7 @@ publishing {
 }
 
 group = "com.berkaykirecci"
-version = "0.0.10"
+version = "0.0.21"
 
 signing {
     //useGpgCmd()

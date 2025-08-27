@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 expect fun NativeAlert(
     message: String? = null,
     title: String? = null,
+    onDismiss: () -> Unit = {},
     actions: List<DialogAction>? = null
 )
 

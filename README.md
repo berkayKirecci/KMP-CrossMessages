@@ -45,12 +45,12 @@ dependencies {
 
 ```kotlin
 val snackbarState = rememberSnackbarState()
+MultiPlatformSnackbar(state = snackbarState)
 
 state.show(SnackbarDefaults.success("Success Message"))
 state.show(SnackbarDefaults.warning("Warning Message"))
 state.show(SnackbarDefaults.error("Error Message"))
 state.show(SnackbarDefaults.info("Info Message"))
-MultiPlatformSnackbar(state = snackbarState)
 ```
 
 #### 🔹 Fully Customized Snackbar
@@ -84,9 +84,9 @@ state.show(
 
 ```kotlin
 val toastState = rememberToastState()
+Toast(state = toastState)
 
 state.show("Toast Message")
-Toast(state = toastState)
 ```
 
 ---

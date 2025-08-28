@@ -58,7 +58,7 @@ tasks.register("publishToMaven") {
 }
 
 group = "io.github.berkaykirecci"
-version = "1.0.0"
+version = "1.0.1"
 
 signing {
     useGpgCmd()

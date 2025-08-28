@@ -58,7 +58,7 @@ tasks.register("publishToMaven") {
 }
 
 group = "io.github.berkaykirecci"
-version = "1.0.1"
+version = "1.0.2"
 
 signing {
     useGpgCmd()
@@ -70,7 +70,7 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "crossmesages", version.toString())
+    coordinates(group.toString(), "crossmessages", version.toString())
 
     pom {
         name = "KMP-CrossMessages"

@@ -41,7 +41,7 @@ It currently supports:
 
 ```kotlin
 dependencies {
-    implementation("io.github.berkaykirecci:crossmesages:$version")
+    implementation("io.github.berkaykirecci:crossmessages:$version")
 }
 ```
 

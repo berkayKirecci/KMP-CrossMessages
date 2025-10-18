@@ -57,10 +57,23 @@ dependencies {
 val snackbarState = rememberSnackbarState()
 MultiPlatformSnackbar(state = snackbarState)
 
-snackbarState.show(SnackbarDefaults.success("Success Message"))
-snackbarState.show(SnackbarDefaults.warning("Warning Message"))
-snackbarState.show(SnackbarDefaults.error("Error Message"))
-snackbarState.show(SnackbarDefaults.info("Info Message"))
+snackbarState.success("Success Message")
+snackbarState.warning("Warning Message")
+snackbarState.error("Error Message")
+snackbarState.info("Info Message")
+```
+
+#### 🔹 Change Default Snacbkar Colors
+
+```kotlin
+CompositionLocalProvider(
+  LocalSnackbarColors provides DefaultSnackbarColors(success = Color.Green)
+) {
+  val snackbarState = rememberSnackbarState()
+  MultiPlatformSnackbar(state = snackbarState)
+
+  snackbarState.success("Success Message")
+}
 ```
 
 #### 🔹 Fully Customized Snackbar

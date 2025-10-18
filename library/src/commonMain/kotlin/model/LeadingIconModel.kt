@@ -7,6 +7,6 @@ import org.jetbrains.compose.resources.DrawableResource
 
 data class LeadingIconModel(
     val iconRes: DrawableResource,
-    val iconTint: Color = Color.Black,
+    val iconTint: Color = Color.White,
     val iconSize: Dp = 24.dp
 )

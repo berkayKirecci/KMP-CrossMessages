@@ -1,13 +1,9 @@
 [versions]
 agp = "8.12.0"
-kotlin = "2.2.0"
+kotlin = "2.2.20"
 composeMultiplatform = "1.8.2"
 android-minSdk = "24"
 android-compileSdk = "36"
-uiTooling = "1.8.3"
-
-[libraries]
-androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
 
 [plugins]
 androidLibrary = { id = "com.android.library", version.ref = "agp" }

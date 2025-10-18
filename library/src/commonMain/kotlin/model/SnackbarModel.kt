@@ -10,6 +10,6 @@ data class SnackbarModel(
     val leadingIconModel: LeadingIconModel? = null,
     val textModel: TextModel = TextModel(),
     val showActionButton: Boolean = true,
-    val actionButtonModel: ActionButtonModel? = null,
+    val actionButtonModel: ActionButtonModel? = ActionButtonModel(),
     val alignment: Alignment = Alignment.TopCenter
 )

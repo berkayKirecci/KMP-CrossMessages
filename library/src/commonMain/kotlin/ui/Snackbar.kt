@@ -31,8 +31,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import io.github.berkaykirecci.library.generated.resources.Res
-import io.github.berkaykirecci.library.generated.resources.ic_close
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import state.SnackbarState
@@ -135,20 +133,22 @@ private fun MultiPlatformSnackbar(
                 Spacer(Modifier.width(8.dp))
 
                 if (showActionButton(state)) {
-                    val interactionSource = remember { MutableInteractionSource() }
-
-                    Icon(
-                        modifier = Modifier.clickable(
-                            interactionSource = interactionSource,
-                            indication = null
-                        ) {
-                            state.snackbarModel?.actionButtonModel?.onActionClick?.run {
-                                invoke()
-                            } ?: state.clear()
-                        },
-                        painter = painterResource(getActionButton(state)),
-                        contentDescription = null
-                    )
+                    getActionButton(state)?.let { model ->
+                        val interactionSource = remember { MutableInteractionSource() }
+                        Icon(
+                            modifier = Modifier.clickable(
+                                interactionSource = interactionSource,
+                                indication = null
+                            ) {
+                                state.snackbarModel?.actionButtonModel?.onActionClick?.run {
+                                    invoke()
+                                } ?: state.clear()
+                            }.size(model.iconSize),
+                            painter = painterResource(model.iconRes),
+                            tint = model.iconTint,
+                            contentDescription = null
+                        )
+                    }
                 }
             }
         }
@@ -178,9 +178,8 @@ private fun showActionButton(state: SnackbarState) =
 
 
 private fun getActionButton(state: SnackbarState) =
-    state.snackbarModel?.actionButtonModel?.iconRes
-        ?: state.temp?.actionButtonModel?.iconRes
-        ?: Res.drawable.ic_close
+    state.snackbarModel?.actionButtonModel
+        ?: state.temp?.actionButtonModel
 
 private fun getAlignment(state: SnackbarState) =
     state.snackbarModel?.alignment

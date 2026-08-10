@@ -22,7 +22,6 @@ import kotlin.coroutines.resume
 class CrossSnackbarHostState internal constructor(
     private val scope: CoroutineScope?,
 ) {
-    constructor() : this(scope = null)
 
     private val mutex = Mutex()
 

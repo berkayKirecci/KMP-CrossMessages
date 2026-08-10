@@ -25,6 +25,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
 
 /** Chooses between platform-native toast chrome and the shared Compose-rendered one. */
 enum class CrossToastStyle {
@@ -47,7 +48,7 @@ fun CrossToastHost(
 
     LaunchedEffect(data) {
         val current = data ?: return@LaunchedEffect
-        delay(current.visuals.duration.toMillis())
+        delay(current.visuals.duration.toMillis().milliseconds)
         current.dismiss()
     }
 

@@ -41,7 +41,6 @@ interface CrossToastData {
 class CrossToastHostState internal constructor(
     private val scope: CoroutineScope?,
 ) {
-    constructor() : this(scope = null)
 
     private val mutex = Mutex()
 
@@ -81,8 +80,8 @@ class CrossToastHostState internal constructor(
 
     private fun requireScope(): CoroutineScope = scope ?: error(
         "CrossToastHostState was constructed without a CoroutineScope, so show() is unavailable. " +
-            "Build it with rememberCrossToastHostState(), or call the suspending showToast() from " +
-            "a coroutine you own."
+                "Build it with rememberCrossToastHostState(), or call the suspending showToast() from " +
+                "a coroutine you own."
     )
 }
 

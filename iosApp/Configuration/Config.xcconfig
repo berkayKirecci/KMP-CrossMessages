@@ -1,0 +1,5 @@
+APP_NAME = CrossMessages
+BUNDLE_ID = io.github.berkaykirecci.crossmessages.sample
+
+// Set only for physical-device builds.
+TEAM_ID =

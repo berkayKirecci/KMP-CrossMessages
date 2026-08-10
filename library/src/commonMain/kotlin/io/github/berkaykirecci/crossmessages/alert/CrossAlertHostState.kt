@@ -70,10 +70,8 @@ interface CrossAlertData {
 /** Holds the alert currently on screen and serializes the ones behind it. */
 @Stable
 class CrossAlertHostState internal constructor(
-    private val scope: CoroutineScope?,
+    private val scope: CoroutineScope,
 ) {
-    constructor() : this(scope = null)
-
     private val mutex = Mutex()
 
     /** The alert being displayed, or `null` when nothing is showing. */
@@ -103,7 +101,7 @@ class CrossAlertHostState internal constructor(
 
     /** Fire-and-forget variant for non-coroutine call sites. */
     fun show(visuals: CrossAlertVisuals): Job =
-        requireScope().launch { showAlert(visuals) }
+        scope.launch { showAlert(visuals) }
 
     /** Convenience overload of [show]. */
     fun show(
@@ -118,11 +116,6 @@ class CrossAlertHostState internal constructor(
         currentAlertData?.dismiss()
     }
 
-    private fun requireScope(): CoroutineScope = scope ?: error(
-        "CrossAlertHostState was constructed without a CoroutineScope, so show() is unavailable. " +
-            "Build it with rememberCrossAlertHostState(), or call the suspending showAlert() from " +
-            "a coroutine you own."
-    )
 }
 
 private class CrossAlertDataImpl(

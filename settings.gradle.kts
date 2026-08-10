@@ -13,5 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KMP-Snackbar"
+rootProject.name = "KMP-CrossMessages"
 include(":library")
+include(":sample")
+include(":sample-android")

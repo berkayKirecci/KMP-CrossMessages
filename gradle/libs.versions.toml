@@ -1,13 +1,24 @@
 [versions]
-agp = "8.12.0"
-kotlin = "2.2.20"
-composeMultiplatform = "1.8.2"
+agp = "9.3.1"
+kotlin = "2.4.10"
+composeMultiplatform = "1.11.1"
+coroutines = "1.11.0"
+kotlinxCollectionsImmutable = "0.5.1"
+androidx-activityCompose = "1.13.0"
+vanniktech-mavenPublish = "0.37.0"
 android-minSdk = "24"
+android-targetSdk = "36"
 android-compileSdk = "36"
 
+[libraries]
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinxCollectionsImmutable" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+
 [plugins]
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
+androidKmpLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-vanniktech-mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.34.0" }
+vanniktech-mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech-mavenPublish" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

@@ -20,9 +20,8 @@ import kotlin.coroutines.resume
 /** Holds the snackbar currently on screen and serializes the ones waiting behind it. */
 @Stable
 class CrossSnackbarHostState internal constructor(
-    private val scope: CoroutineScope?,
+    private val scope: CoroutineScope,
 ) {
-
     private val mutex = Mutex()
 
     /** The snackbar being displayed, or `null` when nothing is showing. */
@@ -69,7 +68,7 @@ class CrossSnackbarHostState internal constructor(
 
     /** Fire-and-forget variant of [showSnackbar] for non-coroutine call sites. */
     fun show(visuals: CrossSnackbarVisuals): Job =
-        requireScope().launch { showSnackbar(visuals) }
+        scope.launch { showSnackbar(visuals) }
 
     /** Shows [message] with the [CrossSnackbarStyle.Success] palette and a check icon. */
     fun success(
@@ -124,11 +123,6 @@ class CrossSnackbarHostState internal constructor(
         )
     )
 
-    private fun requireScope(): CoroutineScope = scope ?: throw IllegalStateException(
-        "CrossSnackbarHostState was constructed without a CoroutineScope, so the non-suspending " +
-            "helpers are unavailable. Build it with rememberCrossSnackbarHostState(), or call the " +
-            "suspending showSnackbar() from a coroutine you own."
-    )
 }
 
 /** Handle to the snackbar currently on screen. */

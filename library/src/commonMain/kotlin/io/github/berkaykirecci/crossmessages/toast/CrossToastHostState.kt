@@ -39,9 +39,8 @@ interface CrossToastData {
 /** Holds the toast currently on screen and serializes the ones behind it. */
 @Stable
 class CrossToastHostState internal constructor(
-    private val scope: CoroutineScope?,
+    private val scope: CoroutineScope,
 ) {
-
     private val mutex = Mutex()
 
     /** The toast being displayed, or `null` when nothing is showing. */
@@ -71,18 +70,13 @@ class CrossToastHostState internal constructor(
     fun show(
         message: String,
         duration: CrossToastDuration = CrossToastDuration.Short,
-    ): Job = requireScope().launch { showToast(message, duration) }
+    ): Job = scope.launch { showToast(message, duration) }
 
     /** Dismisses whatever is on screen right now; the next queued toast takes over. */
     fun dismissCurrent() {
         currentToastData?.dismiss()
     }
 
-    private fun requireScope(): CoroutineScope = scope ?: error(
-        "CrossToastHostState was constructed without a CoroutineScope, so show() is unavailable. " +
-                "Build it with rememberCrossToastHostState(), or call the suspending showToast() from " +
-                "a coroutine you own."
-    )
 }
 
 private class CrossToastDataImpl(

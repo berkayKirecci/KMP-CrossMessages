@@ -10,9 +10,6 @@ Multiplatform codebase, using each platform's own presentation where it matters.
 | **Desktop (JVM)** | Material 3 Compose | Compose surface | Material 3 `AlertDialog` |
 | **Web (wasmJs / js)** | Material 3 Compose | Compose surface | Material 3 `AlertDialog` |
 
-📖 [Library guide](docs/LIBRARY.md) · 📝 [What changed in 2.0.0](docs/CHANGES-2.0.0.md) ·
-🚀 [Publishing](docs/PUBLISHING.md) — all available in English and Türkçe.
-
 ---
 
 ## ✨ Features
@@ -199,8 +196,9 @@ Any number of actions is supported. `CrossAlertActionStyle.Destructive` renders 
 Passing no actions at all yields a single confirm button labelled `defaultConfirmLabel`.
 
 `CrossAlertVisuals.actions` is an `ImmutableList` so the Compose compiler can *infer* its stability
-rather than take an `@Immutable` promise. If you'd rather pass a plain `List`, use the convenience
-overload, which converts for you:
+rather than take an `@Immutable` promise. `kotlinx-collections-immutable` arrives transitively, so
+`import kotlinx.collections.immutable.persistentListOf` works without declaring anything extra. If
+you'd rather pass a plain `List`, use the convenience overload, which converts for you:
 
 ```kotlin
 alertHostState.show(
@@ -237,7 +235,7 @@ Compose resources into the app bundle, so Xcode is the only thing you need. From
 
 ```bash
 xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp \
-  -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' build
+  -destination 'generic/platform=iOS Simulator' build
 ```
 
 Building for a physical device additionally needs your Apple Developer Team ID in

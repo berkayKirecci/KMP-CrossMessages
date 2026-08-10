@@ -39,6 +39,7 @@ import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import io.github.berkaykirecci.crossmessages.core.swipeToDismiss
 import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
 
 private const val ANIMATION_DURATION_MILLIS = 350
 private const val SHORT_DURATION_MILLIS = 4_000L
@@ -79,7 +80,7 @@ fun CrossSnackbarHost(
         )
         if (total == Long.MAX_VALUE) return@LaunchedEffect
         while (elapsed.longValue < total) {
-            delay(TIMER_TICK_MILLIS)
+            delay(TIMER_TICK_MILLIS.milliseconds)
             elapsed.longValue += TIMER_TICK_MILLIS
         }
         data.dismiss()

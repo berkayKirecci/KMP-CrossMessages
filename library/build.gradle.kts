@@ -38,13 +38,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            // `api`: these types appear in the public API. Keep the `compose.*` accessors despite
-            // the deprecation — plain coordinates drop the version and platform suffix from the POM.
-            api(compose.runtime)
-            api(compose.foundation)
-            api(compose.material3)
-            api(compose.ui)
-            api(compose.components.resources)
+            api(libs.compose.runtime)
+            api(libs.compose.foundation)
+            api(libs.compose.material3)
+            api(libs.compose.ui)
+            api(libs.compose.components.resources)
             api(libs.kotlinx.coroutines.core)
             api(libs.kotlinx.collections.immutable)
         }
@@ -61,7 +59,6 @@ compose.resources {
     publicResClass = false
 }
 
-// Stability reports: ./gradlew :library:assemble -Pcrossmessages.composeReports
 composeCompiler {
     if (providers.gradleProperty("crossmessages.composeReports").isPresent) {
         reportsDestination = layout.buildDirectory.dir("compose-reports")
@@ -71,13 +68,11 @@ composeCompiler {
 
 group = "io.github.berkaykirecci"
 
-// Bump before tagging a release; the publish workflow does not read the git tag.
 version = "2.0.0"
 
 mavenPublishing {
     publishToMavenCentral()
 
-    // Signs only when CI supplies a key, so publishToMavenLocal works without a GPG keyring.
     if (providers.gradleProperty("signingInMemoryKey").isPresent) {
         signAllPublications()
     }
